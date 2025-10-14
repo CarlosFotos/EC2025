@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos de Fotos - Euroson Latino 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Paleta de Colores Moderna */
+        :root {
+            --color-bg-primary: #0f0f0f;
+            --color-bg-secondary: #1a1a1a;
+            --color-bg-card: #242424;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #b0b0b0;
+            --color-accent: #00d4ff;
+            --color-accent-hover: #00b8e0;
+            --color-whatsapp: #25D366;
+            --color-instagram: #E4405F;
+            --color-payment: #ff6b00;
+            --color-success: #00c853;
+            --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            --gradient-instagram: linear-gradient(45deg, #405DE6, #E4405F, #FFDC80);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 12px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 20%);
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Header mejorado */
+        header {
+            background: var(--gradient-primary);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 500;
+            position: relative;
+        }
+
+        /* Contenido principal */
+        .content {
+            padding: 30px;
+        }
+
+        /* Tarjetas de sección */
+        .card {
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Encabezados de sección */
+        h2 {
+            color: var(--color-text-primary);
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4em;
+        }
+
+        h2 i {
+            color: var(--color-accent);
+        }
+
+        /* Caja de bienvenida */
+        .welcome-box {
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .welcome-box p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .welcome-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Formulario mejorado */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--color-text-primary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        small {
+            color: var(--color-text-secondary);
+            font-size: 0.85em;
+            display: block;
+            margin-top: 6px;
+        }
+
+        /* Sección de pago mejorada */
+        .payment-info {
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, transparent 100%);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .payment-info h2 {
+            color: var(--color-payment);
+        }
+
+        .payment-method {
+            margin-bottom: 20px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .payment-method:last-child {
+            margin-bottom: 0;
+        }
+
+        .payment-method h3 {
+            color: var(--color-accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .payment-details {
+            margin-top: 12px;
+        }
+
+        .payment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-item:last-child {
+            border-bottom: none;
+        }
+
+        .payment-label {
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            min-width: 80px;
+        }
+
+        .payment-value {
+            flex: 1;
+            margin: 0 12px;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            min-width: 70px;
+        }
+
+        .copy-btn:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .copy-btn.copied {
+            background: var(--color-success);
+        }
+
+        .payment-amount {
+            text-align: center;
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(255, 107, 0, 0.2);
+            border-radius: 8px;
+            border: 1px solid var(--color-payment);
+        }
+
+        .payment-amount .amount {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: var(--color-payment);
+        }
+
+        /* Botones mejorados */
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .action-button i {
+            font-size: 1.2em;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-button {
+            background: var(--color-whatsapp);
+        }
+
+        .whatsapp-button:hover {
+            background: #1da851;
+        }
+
+        .link-button {
+            background: var(--gradient-primary);
+        }
+
+        .link-button:hover {
+            background: linear-gradient(135deg, #00b8e0 0%, #0088aa 100%);
+        }
+
+        /* Botones de redes sociales */
+        .social-button-group {
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-button {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-text-primary);
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .social-button:hover {
+            background: var(--color-instagram);
+            transform: translateY(-2px);
+        }
+
+        .social-button.instagram {
+            background: var(--gradient-instagram);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--color-bg-card);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer p {
+            margin-bottom: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        footer p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 12px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .payment-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .payment-value {
+                margin: 0;
+            }
+            
+            .copy-btn {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px 5px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+            }
+            
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Efectos de carga suaves */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mejora visual para números de fotos */
+        .photo-hint {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin: 0 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container fade-in">
+    <header>
+        <h1><i class="fas fa-camera"></i> Carlos Machuca Fotografía</h1>
+        <p class="subtitle">Fotógrafo Oficial Euroson Latino Argentina 2025 🇦🇷✨</p>
+    </header>
+
+    <div class="content">
+        <div class="welcome-box">
+            <h2><i class="fas fa-hand-wave"></i> ¡Hola Bailarín/a!</h2>
+            <p><i class="fas fa-camera"></i> Soy Carlos Machuca. Elige tus <strong>10 fotos favoritas</strong> y completa el formulario.</p>
+            <p><i class="fas fa-mobile-alt"></i> <strong>Paso 1:</strong> Haz clic para ver las fotos y anota los <span class="photo-hint">números</span> de las que deseas encargar.</p>
+            <p><i class="fas fa-lightbulb"></i> <strong>Recordá:</strong> Tu pack incluye un máximo de <strong>10 fotos</strong>.</p>
+        </div>
+
+        <a href="TU_LINK_DE_GOOGLE_DRIVE_AQUI" target="_blank" class="action-button link-button">
+            <i class="fas fa-images"></i> VER GALERÍA DE FOTOS CON NÚMEROS
+        </a>
+
+        <form id="orderForm">
+            <div class="card">
+                <h2><i class="fas fa-edit"></i> Paso 2: Completa tu Pedido</h2>
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <div class="input-group">
+                        <input type="text" id="nombre" required placeholder="Tu nombre completo">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <div class="input-group">
+                        <input type="email" id="email" required placeholder="tu.email@ejemplo.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="instagram">Usuario de Instagram</label>
+                    <div class="input-group">
+                        <input type="text" id="instagram" placeholder="@UsuarioInstagram (Opcional)">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fotos">Números de las fotos elegidas *</label>
+                    <div class="input-group">
+                        <textarea id="fotos" placeholder="Ej: 1024, 1025, 1030, 1045, 1060..." required></textarea>
+                    </div>
+                    <small>Separa los números con comas. Máximo 10 fotos.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="observaciones">Observaciones (Opcional)</label>
+                    <div class="input-group">
+                        <textarea id="observaciones" placeholder="Algún retoque especial o comentario..."></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-info">
+                <h2><i class="fas fa-credit-card"></i> Paso 3: Realiza el Pago</h2>
+                <p>Por favor, realiza la transferencia antes de enviar el formulario.</p>
+                
+                <div class="payment-method">
+                    <h3><i class="fas fa-university"></i> Banco Galicia</h3>
+                    <div class="payment-details">
+                        <div class="payment-item">
+                            <span class="payment-label">Titular:</span>
+                            <span class="payment-value">Carlos Andres Machuca Navarrete</span>
+                        </div>
+                        <div class="payment-item">
+                            <span class="payment-label">CBU:</span>
+                            <span class="payment-value">0070221030004009046873</span>
+                            <button class="copy-btn" data-text="0070221030004009046873">
+                                <i class="far fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="payment-item">
+                            <span class="payment-label">Alias:</span>
+                            <span class="payment-value">MUNDO.SALERO.MAREA</span>
+                            <button class="copy-btn" data-text="MUNDO.SALERO.MAREA">
+                                <i class="far fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-method">
+                    <h3><i class="fas fa-wallet"></i> Mercado Pago</h3>
+                    <div class="payment-details">
+                        <div class="payment-item">
+                            <span class="payment-label">CVU:</span>
+                            <span class="payment-value">0000003100066881278880</span>
+                            <button class="copy-btn" data-text="0000003100066881278880">
+                                <i class="far fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="payment-item">
+                            <span class="payment-label">Alias:</span>
+                            <span class="payment-value">machufotografia</span>
+                            <button class="copy-btn" data-text="machufotografia">
+                                <i class="far fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div class="payment-item">
+                            <span class="payment-label">Celular:</span>
+                            <span class="payment-value">+5491167137742</span>
+                            <button class="copy-btn" data-text="+5491167137742">
+                                <i class="far fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-amount">
+                    <p><strong>Monto a transferir:</strong></p>
+                    <p class="amount">$20.000 pesos argentinos</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-check-circle"></i> Paso 4: ¡Enviar y Finalizar!</h2>
+                <p style="color: var(--color-payment); font-weight: 600; margin-bottom: 16px;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> Se abrirá WhatsApp con el pedido. <strong>No olvides adjuntar la captura del comprobante de pago</strong> en el chat antes de enviar el mensaje.
+                </p>
+                
+                <button type="submit" class="action-button whatsapp-button">
+                    <i class="fab fa-whatsapp"></i> ENVIAR PEDIDO Y COMPROBANTE POR WHATSAPP
+                </button>
+            </div>
+        </form>
+        
+        <div class="social-button-group">
+            <h2><i class="fas fa-heart"></i> Síguenos en Instagram</h2>
+            <a href="https://www.instagram.com/CarlosMachucaFotografia" target="_blank" class="action-button social-button instagram">
+                <i class="fab fa-instagram"></i> CarlosMachucaFotografia
+            </a>
+            <a href="https://www.instagram.com/copaamericadancecompetition" target="_blank" class="action-button social-button instagram">
+                <i class="fas fa-trophy"></i> copaamericadancecompetition
+            </a>
+            <a href="https://www.instagram.com/eurosonlatinoargentina" target="_blank" class="action-button social-button instagram">
+                <i class="fas fa-flag"></i> eurosonlatinoargentina
+            </a>
+        </div>
+
+        <footer>
+            <p><i class="fas fa-envelope"></i> En breve recibirás tus fotos listas para publicar y brillar <i class="fas fa-fire"></i></p>
+            <p><i class="fas fa-star"></i> ¡Gracias por haber sido parte de la historia! <i class="fas fa-sparkles"></i></p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    // Función para copiar al portapapeles
+    document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const textToCopy = this.getAttribute('data-text');
+            
+            // Usar la API del portapapeles moderna
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Mostrar feedback visual
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                this.classList.add('copied');
+                
+                // Restaurar después de 2 segundos
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                // Fallback para navegadores más antiguos
+                const textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Mostrar feedback visual incluso con fallback
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                this.classList.add('copied');
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.classList.remove('copied');
+                }, 2000);
+            });
+        });
+    });
+
+    // Función del formulario de WhatsApp
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Recopila los datos del formulario
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        const instagram = document.getElementById('instagram').value;
+        const fotos = document.getElementById('fotos').value;
+        const observaciones = document.getElementById('observaciones').value;
+
+        // Construye el mensaje de WhatsApp
+        let mensaje = `*PEDIDO DE FOTOS - Euroson Latino 2025*
+
+Hola Carlos! Acabo de completar el formulario de pedido y realicé el pago.
+
+---
+*DATOS DEL CLIENTE:*
+👤 Nombre: ${nombre}
+📧 Email: ${email}
+📱 Instagram: ${instagram ? instagram : 'No proporcionado'}
+
+---
+*FOTOS SOLICITADAS (Máx. 10):*
+📸 Números: ${fotos}
+
+---
+*OBSERVACIONES:*
+${observaciones ? observaciones : 'Ninguna.'}
+
+---
+*¡IMPORTANTE!*
+Adjunto la captura de pantalla del comprobante de pago en este mismo chat.
+Por favor, confírmame el pedido. ¡Muchas gracias!
+`;
+
+        // Codifica el mensaje para la URL
+        const mensajeCodificado = encodeURIComponent(mensaje);
+
+        // Número de teléfono de Carlos
+        const numeroTelefono = '5491167137742'; 
+        
+        // Crea el link de WhatsApp
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensajeCodificado}`;
+
+        // Abre el link en una nueva pestaña
+        window.open(whatsappURL, '_blank');
+        
+        // Muestra una alerta mejorada
+        setTimeout(() => {
+            alert('¡WhatsApp abierto! 📱\n\nPor favor, revisa el mensaje prellenado y *NO OLVIDES ADJUNTAR LA FOTO DEL COMPROBANTE DE PAGO* antes de enviar.');
+        }, 500);
+    });
+
+    // Efectos de interacción suaves
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+</script>
+
+</body>
+</html>
