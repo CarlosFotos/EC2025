@@ -95,6 +95,88 @@
             padding: 30px;
         }
 
+        /* Caja de bienvenida MEJORADA */
+        .welcome-box {
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .welcome-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-header h2 {
+            margin: 0;
+            color: var(--color-text-primary);
+            font-size: 1.4em;
+        }
+
+        .welcome-icon {
+            font-size: 1.6em;
+            color: var(--color-accent);
+        }
+
+        .instruction-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .step-number {
+            background: var(--gradient-primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9em;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content p {
+            margin: 0;
+            line-height: 1.5;
+            color: var(--color-text-primary);
+        }
+
+        .step-highlight {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .reminder-box {
+            background: rgba(255, 107, 0, 0.1);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .reminder-box strong {
+            color: var(--color-payment);
+            font-size: 1.1em;
+        }
+
         /* Tarjetas de sección */
         .card {
             background: var(--color-bg-card);
@@ -123,26 +205,6 @@
 
         h2 i {
             color: var(--color-accent);
-        }
-
-        /* Caja de bienvenida */
-        .welcome-box {
-            background: var(--color-bg-card);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-            border-left: 4px solid var(--color-accent);
-        }
-
-        .welcome-box p {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .welcome-box p:last-child {
-            margin-bottom: 0;
         }
 
         /* Formulario mejorado */
@@ -414,6 +476,16 @@
             .copy-btn {
                 align-self: flex-end;
             }
+
+            .instruction-step {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .step-number {
+                align-self: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -432,6 +504,16 @@
             h2 {
                 font-size: 1.2em;
             }
+
+            .welcome-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .instruction-step {
+                padding: 12px;
+            }
         }
 
         /* Efectos de carga suaves */
@@ -442,17 +524,6 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Mejora visual para números de fotos */
-        .photo-hint {
-            display: inline-block;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            margin: 0 2px;
         }
     </style>
 </head>
@@ -465,17 +536,37 @@
     </header>
 
     <div class="content">
+        <!-- SECCIÓN DE BIENVENIDA MEJORADA -->
         <div class="welcome-box">
-            <h2><i class="fas fa-hand-wave"></i> ¡Hola Bailarín/a!</h2>
-            <p><i class="fas fa-camera"></i> Soy Carlos Machuca. Elige tus <strong>10 fotos favoritas</strong> y completa el formulario.</p>
-            <p><i class="fas fa-mobile-alt"></i> <strong>Paso 1:</strong> Haz clic para ver las fotos y anota los <span class="photo-hint">números</span> de las que deseas encargar.</p>
-            <p><i class="fas fa-lightbulb"></i> <strong>Recordá:</strong> Tu pack incluye un máximo de <strong>10 fotos</strong>.</p>
+            <div class="welcome-header">
+                <i class="fas fa-hand-wave welcome-icon"></i>
+                <h2>¡Hola Bailarín/a!</h2>
+            </div>
+
+            <div class="instruction-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <p>Soy <span class="step-highlight">Carlos Machuca</span>. Elige tus <span class="step-highlight">10 fotos favoritas</span> y completa el formulario.</p>
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <p><strong>Paso 1:</strong> Haz clic para ver las fotos y anota los <span class="step-highlight">números</span> de las que deseas encargar.</p>
+                </div>
+            </div>
+
+            <div class="reminder-box">
+                <p><strong>📝 Recordá:</strong> Tu pack incluye un máximo de <span class="step-highlight">10 fotos</span></p>
+            </div>
         </div>
 
         <a href="TU_LINK_DE_GOOGLE_DRIVE_AQUI" target="_blank" class="action-button link-button">
             <i class="fas fa-images"></i> VER GALERÍA DE FOTOS CON NÚMEROS
         </a>
 
+        <!-- Resto del formulario se mantiene igual -->
         <form id="orderForm">
             <div class="card">
                 <h2><i class="fas fa-edit"></i> Paso 2: Completa tu Pedido</h2>
